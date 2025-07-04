@@ -54,7 +54,7 @@ to develop a "joint concept" with respect to "the RDC semantic toolset".
 
 In order to stay true to the spirit of this action as originally considered, we
 developed a set of goals to capture the essence of Action 1. Drawing from
-bierwirth2020, glockner2020 and diepenbroek2023, we defined characteristics that
+@bierwirth2020, @glockner2020 and @diepenbroek2023, we defined characteristics that
 would 1) increase the chance for SciWIn to become a part of an NFDI-RDC if that
 concept were actually implemented, and 2) maximize cross-domain usage,
 usefulness and synergies in any case:
@@ -98,7 +98,7 @@ computational workflows for remote execution and fetch the results.
 SciWIn-Client thus implements the functionality that was assigned to "Workflow
 Hub" in the initial sketch in the proposal.
 
-In addition to **SciWIn-Clients** we are planning to realize a second
+In addition to **SciWIn-Client** we are planning to realize a second
 software-project within Measure 4.4, the **SciWIn-Hub**. The need for SciWIn-Hub
 stems from the realization that the data repositories ("Storage Instances" such
 as _e!DAL-PGP_, _Bonares_, _TISDAR_[^1] in the proposal) are not suited to
@@ -109,6 +109,37 @@ scientific output that is reliably preserved over long time-spans. However, a
 programatically driven, non interactive submission of content is not possible
 with such repositories, and sometimes even reading data requires interactive operation.
 
+Access to SciWIn-Hub and other services, such as the __FAIRagro Searchable
+Inventory of Services and Data_ (@ewert2023, pp. 94-96) and compute instances,
+will be managed by the NFDI-wide Base4NFDI project _IAM4NFDI_, that is supported
+by the Working Group Identity and Access Management (@pempe2022). Integration of
+this AAI solution into FAIRagro is performed by FAIRagro Measure 4.2.
+**SciWIn-Client** will implement the respective authorization protocol.
+
+Workflow objects in the SciWIn-context are data structures that encapsulate the
+definition of workflows with associated code and data or references to code and
+data. Since a close collaboration between FAIRagro and NFDI Consortium DataPLANT
+is established on different levels, we have taken into account their version of
+a FAIR Digital Object, the Annotated Research Context (ARC), and the established
+standards on which it is based. These are the Common Workflow Language (CWL,
+@crusoe2022) to specify computational workflows and the Research Object Crate
+(RO-Crate, @soiland-reyes2022) as a data structure to package data (which here
+also includes code and workflow descriptions). While compatibility with the
+advanced tooling and infrastructure of DataPLANT is an important piece to
+achieve synergies with this consortium covering a neighboring research domain,
+CWL and RO-Crate represent the state-of-the art for workflow descriptions and
+semantically annotated metadata formats. Therefore, they are also used or
+considered by other NFDI consortial, e.g. NFDI4Ing (@bronger2022) and
+NFDI4Health (@lobe2024). Furthermore, the semanitic annotation of metadata
+allows for the integration of such FAIR Digital Objects into knowledge graphs
+that interconnect.
+
+workflowhub.eu
+knowledge graphs
+
+
+settled on the workflow description
+language CWL (@crusoe2022), on
 - Compute instances: in principle general CWL capable, in practice reana, in principle any Reana in practice our own
 - Workflow objects : Move from ARC as central data structure to multi-data container compatibility.
 
@@ -119,7 +150,7 @@ Client
 Hub
 Storage Instances
 Workflow objects now multi-paradigm compatibility
-based on workflow run crate.
+based on provenance run crate.
 
 ### SciWIn client
 
@@ -130,10 +161,15 @@ based on workflow run crate.
 
 conceptual challenges
 
-remote execution
+remote execution Reana wegen Multicloud
 workflow & data
 remote reference
 dockerization
+
+### Selection of CWL
+
+### Selection of 
+
 
 ### SciWIn-Hub
 
@@ -143,14 +179,53 @@ In progress
 + tech stack
 + use cases
 
++ "CWL package manager"
++ Visualisierung von Workflows
++ cordra ...
 
 ## Development strategy
 
 ## Interaction within FAIRagro
 
++ helpdesk
++ use cases
++ outreach / promotion
+
++ techn : search findet workflows
+
 ## Interaction within NFDI and beyond
 
-## Towards the establishment of SciWIn as a common tool for computational workflows.
++ BASE4NFDI (KG4NFDI, MC (Reana), IAM4NFDI)
+
+
+
+## Towards the establishment of SciWIn as a common tool for computational workflows
+
+Use cases,
+Outreach
+Workshop,
+Identify other consortia to co-operate
+reach out to other communities
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 [diepenbroek2023] The concept of data integration is partly described in the RDC
@@ -164,6 +239,40 @@ model (Krantz et al., 2021)
   as part of the scientists' daily toolset.
 + Serves to capture computational workflows with minimal effort in a standards
   compliant way.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
