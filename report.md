@@ -76,7 +76,8 @@ usefulness and synergies in any case:
 
 ## SciWIn components
 
-The original idea of the SciWIn design, as laid out in an ecosystem map (@ewert2023, Figure 16) features five components:
+The original idea of the SciWIn design, as laid out in an ecosystem map
+(@ewert2023, Figure 16) features five components:
 
 1. An AAI provider,
 2. The "Workflow Hub",
@@ -85,20 +86,22 @@ The original idea of the SciWIn design, as laid out in an ecosystem map (@ewert2
 5. Workflow Objects
 
 In that conceptualization, only the "Workflow Hub" was supposed to be developed
-an a dedicated infrastructure item by SciWIn, while the other components are existing services that communicate with the "Workflow Hub". The main purpose of the "Workflow Hub" was the creation of "Workflow Objects".
+an a dedicated infrastructure item by SciWIn, while the other components are
+existing services that communicate with the "Workflow Hub". The main purpose of
+the "Workflow Hub" was the creation of "Workflow Objects".
 
 The actual desing differs from this early sketch. Realizing that the main
 challenge to be solved lies in the provisioning of tooling for the easy creation
 of workflows, this task is now assigned to a stand-alone program that scientists
 use at their workstations in their daily workflow without requiring
 internet-access, a central service, or authorization. This stand-along program
-is called **SciWIn-Client**. The second important function of **SciWIn-Client**
+is called **SciWIn-Client**. The second important function of SciWIn-Client
 is the communication with compute instances to enable scientists to submit
 computational workflows for remote execution and fetch the results.
 SciWIn-Client thus implements the functionality that was assigned to "Workflow
 Hub" in the initial sketch in the proposal.
 
-In addition to **SciWIn-Client** we are planning to realize a second
+In addition to SciWIn-Client we are planning to realize a second
 software-project within Measure 4.4, the **SciWIn-Hub**. The need for SciWIn-Hub
 stems from the realization that the data repositories ("Storage Instances" such
 as _e!DAL-PGP_, _Bonares_, _TISDAR_[^1] in the proposal) are not suited to
@@ -107,16 +110,17 @@ re-usable, re-combineable, modular computational workflows. The existing
 repositories are still useful in this context to publish workflows as citeable
 scientific output that is reliably preserved over long time-spans. However, a
 programatically driven, non interactive submission of content is not possible
-with such repositories, and sometimes even reading data requires interactive operation.
+with such repositories, and sometimes even reading data requires interactive
+operation.
 
-Access to SciWIn-Hub and other services, such as the __FAIRagro Searchable
+**Access** to SciWIn-Hub and other services, such as the __FAIRagro Searchable
 Inventory of Services and Data_ (@ewert2023, pp. 94-96) and compute instances,
 will be managed by the NFDI-wide Base4NFDI project _IAM4NFDI_, that is supported
 by the Working Group Identity and Access Management (@pempe2022). Integration of
 this AAI solution into FAIRagro is performed by FAIRagro Measure 4.2.
 **SciWIn-Client** will implement the respective authorization protocol.
 
-Workflow objects in the SciWIn-context are data structures that encapsulate the
+**Workflow objects** in the SciWIn-context are data structures that encapsulate the
 definition of workflows with associated code and data or references to code and
 data. Since a close collaboration between FAIRagro and NFDI Consortium DataPLANT
 is established on different levels, we have taken into account their version of
@@ -132,8 +136,28 @@ semantically annotated metadata formats. Therefore, they are also used or
 considered by other NFDI consortial, e.g. NFDI4Ing (@bronger2022) and
 NFDI4Health (@lobe2024). Furthermore, the semanitic annotation of metadata
 allows for the integration of such FAIR Digital Objects into knowledge graphs
-that interconnect.
+that interconnect different domains.
 
+The choice of CWL as workflow description language ensures that workflows
+created by SciWIn can be executed on a broad range of platforms
+(@cwlimplementations2025). However, many of these platforms require significant
+ressources for setup and operation. Different platforms have different sets of
+compute backends, such as HTCondor, AWS, Azure, SLURM and Kubernetes.
+Additionally, the interaction with remote **compute instances** differs from
+platform to platform. Therefore, in order to experiment with remote execution of
+workflows and be able to pilot the whole range of SciWIn functionality, we have
+settled on **Reana** (@simko2019) as primary execution platform. Originating
+from CERN, Reana is widely used and under active since 8 years. Our main reason
+to settle on Reana however was the fact that NFDI4PUNCH provided us simple
+access to an instance at the Leibniz-Institute for Astrophysics Potsdam through
+an informal collaboaration. Furthermore, the BASE4NFDI project MC4NFDI (​__A
+Multicloud Infrastructure for the NFDI_) would have ensured robust,
+well-integrated access to Reana clusters for users of SciWIn. Unfortunately, the
+MC4NFDI proposal was rejected in the 7th submission round. 
+
+we could initially get simple access
+to an instance  with NFDI4PUNCH. 
+MC4NFDI (​A Multicloud Infrastructure for the NFDI)
 workflowhub.eu
 knowledge graphs
 
