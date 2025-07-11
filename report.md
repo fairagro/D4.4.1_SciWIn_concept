@@ -1,4 +1,40 @@
-# Concept of SciWIn as part of the reproducible science toolset in FAIRagro
+---
+documentclass: scrartcl
+classoption:
+  - DIV=15
+papersize: a4
+fontsize: 11pt
+citation-style: apa
+bibliography: bibliography.bib
+header-includes: |
+  \usepackage{orcidlink}
+  \usepackage{authblk}
+  \usepackage{tikz}
+  \usetikzlibrary{calc}
+
+title: "The Concept of SciWIn as part of the reproducible science toolset in FAIRagro"
+---
+
+<!-- The cutomized by-line -->
+\setlength{\topskip}{1.5cm}
+\renewcommand\Authands{\normalfont\small \ and }
+\renewcommand\Authfont{\scshape\small}
+\renewcommand\Affilfont{\normalfont\footnotesize}
+\author[1]{Harald von Waldow \orcidlink{0000-0003-4800-2833}}
+\author[1]{Jens Krumsieck \orcidlink{0000-0001-6242-5846}}
+\author[2]{Antonia Leidel \orcidlink{0009-0007-1765-0527}}
+\author[2]{Patrick König \orcidlink{0000-0002-8948-6793}}
+\affil[1]{Johann Heinrich von Thünen Institute, Braunschweig}
+\affil[2]{ Leibniz Institute of Plant Genetics and Crop Plant Research (IPK), Gatersleben}
+
+\maketitle
+\vspace{-1cm}
+
+<!-- The logo in the top left corner -->
+\tikz[remember picture,overlay,x=\paperwidth,y=\paperheight]{%
+    \node[anchor=north west, inner sep=0pt]
+    at ($(current page.north west)+(.5cm, -.5cm)$)  {\includegraphics[width=5cm]{Fairagro_Logo_linksbuendig_Verlauf.png}};}
+
 
 ## Thematic note
 
@@ -77,7 +113,7 @@ usefulness and synergies in any case:
 ## SciWIn components
 
 The original idea of the SciWIn design, as laid out in an ecosystem map
-(@ewert2023, Figure 16) features five components:
+[@ewert2023, Figure 16] features five components:
 
 1. An AAI provider,
 2. The "Workflow Hub",
@@ -85,18 +121,21 @@ The original idea of the SciWIn design, as laid out in an ecosystem map
 4. Storage instances, and
 5. Workflow Objects
 
+![Original ecosystem idea for SciWIn [Figure 16 from @ewert2023]](oldsystem.png){width=15cm}
+
 In that conceptualization, only the "Workflow Hub" was supposed to be developed
 an a dedicated infrastructure item by SciWIn, while the other components are
 existing services that communicate with the "Workflow Hub". The main purpose of
 the "Workflow Hub" was the creation of "Workflow Objects".
 
-The actual desing differs from this early sketch. Realizing that the main
-challenge to be solved lies in the provisioning of tooling for the easy creation
-of workflows, this task is now assigned to a stand-alone program that scientists
-use at their workstations in their daily workflow without requiring
+The actual desing differs from this early sketch. Figure \ref{newecosystem} depicts the
+current high-level conceptualization of the SciWIn ecosystem. Realizing that the
+main challenge to be solved lies in the provisioning of tooling for the easy
+creation of workflows, this task is now assigned to a stand-alone program that
+scientists use at their workstations in their daily workflow without requiring
 internet-access, a central service, or authorization. This stand-along program
-is called **SciWIn-Client**. The second important function of SciWIn-Client
-is the communication with compute instances to enable scientists to submit
+is called **SciWIn-Client**. The second important function of SciWIn-Client is
+the communication with compute instances to enable scientists to submit
 computational workflows for remote execution and fetch the results.
 SciWIn-Client thus implements the functionality that was assigned to "Workflow
 Hub" in the initial sketch in the proposal.
@@ -113,10 +152,10 @@ programatically driven, non interactive submission of content is not possible
 with such repositories, and sometimes even reading data requires interactive
 operation.
 
-**Access** to SciWIn-Hub and other services, such as the __FAIRagro Searchable
-Inventory of Services and Data_ (@ewert2023, pp. 94-96) and compute instances,
-will be managed by the NFDI-wide Base4NFDI project _IAM4NFDI_, that is supported
-by the Working Group Identity and Access Management (@pempe2022). Integration of
+**Access** to SciWIn-Hub and other services, such as the _FAIRagro Searchable
+Inventory of Services and Data_ [@ewert2023, pp. 94-96] and compute instances,
+will be managed by the NFDI-wide Base4NFDI project IAM4NFDI, that is supported
+by the Working Group Identity and Access Management [@pempe2022]. Integration of
 this AAI solution into FAIRagro is performed by FAIRagro Measure 4.2.
 **SciWIn-Client** will implement the respective authorization protocol.
 
@@ -124,42 +163,39 @@ this AAI solution into FAIRagro is performed by FAIRagro Measure 4.2.
 definition of workflows with associated code and data or references to code and
 data. Since a close collaboration between FAIRagro and NFDI Consortium DataPLANT
 is established on different levels, we have taken into account their version of
-a FAIR Digital Object, the Annotated Research Context (ARC), and the established
-standards on which it is based. These are the Common Workflow Language (CWL,
-@crusoe2022) to specify computational workflows and the Research Object Crate
-(RO-Crate, @soiland-reyes2022) as a data structure to package data (which here
+a FAIR Digital Object, the **Annotated Research Context (ARC)**, and the established
+standards on which it is based. These are the Common Workflow Language [@crusoe2022] to specify computational workflows and the **Research Object Crate**
+[RO-Crate, @soiland-reyes2022] as a data structure to package data (which here
 also includes code and workflow descriptions). While compatibility with the
 advanced tooling and infrastructure of DataPLANT is an important piece to
 achieve synergies with this consortium covering a neighboring research domain,
 CWL and RO-Crate represent the state-of-the art for workflow descriptions and
 semantically annotated metadata formats. Therefore, they are also used or
-considered by other NFDI consortial, e.g. NFDI4Ing (@bronger2022) and
-NFDI4Health (@lobe2024). Furthermore, the semanitic annotation of metadata
+considered by other NFDI consortial, e.g. NFDI4Ing [@bronger2022] and
+NFDI4Health [@lobe2024]. Furthermore, the semanitic annotation of metadata
 allows for the integration of such FAIR Digital Objects into knowledge graphs
 that interconnect different domains.
 
+While the specific 
+
 The choice of CWL as workflow description language ensures that workflows
 created by SciWIn can be executed on a broad range of platforms
-(@cwlimplementations2025). However, many of these platforms require significant
+[@cwlimplementations2025]. However, many of these platforms require significant
 ressources for setup and operation. Different platforms have different sets of
 compute backends, such as HTCondor, AWS, Azure, SLURM and Kubernetes.
 Additionally, the interaction with remote **compute instances** differs from
 platform to platform. Therefore, in order to experiment with remote execution of
 workflows and be able to pilot the whole range of SciWIn functionality, we have
-settled on **Reana** (@simko2019) as primary execution platform. Originating
+settled on **Reana** [@simko2019] as primary execution platform. Originating
 from CERN, Reana is widely used and under active since 8 years. Our main reason
 to settle on Reana however was the fact that NFDI4PUNCH provided us simple
 access to an instance at the Leibniz-Institute for Astrophysics Potsdam through
-an informal collaboaration. Furthermore, the BASE4NFDI project MC4NFDI (​__A
+an informal collaboaration. Furthermore, the BASE4NFDI project MC4NFDI (​_A
 Multicloud Infrastructure for the NFDI_) would have ensured robust,
 well-integrated access to Reana clusters for users of SciWIn. Unfortunately, the
 MC4NFDI proposal was rejected in the 7th submission round. 
 
-we could initially get simple access
-to an instance  with NFDI4PUNCH. 
-MC4NFDI (​A Multicloud Infrastructure for the NFDI)
-workflowhub.eu
-knowledge graphs
+![New ecosystem sketch\label{newecosystem}](system.svg){ width=15cm}
 
 
 settled on the workflow description
