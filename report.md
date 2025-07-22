@@ -110,7 +110,7 @@ usefulness and synergies in any case:
    + to increase development efficiency and
    + to be exposed early on to the greater research ecosystem
 
-## SciWIn components
+## SciWIn components - Overview
 
 The original idea of the SciWIn design, as laid out in an ecosystem map
 [@ewert2023, Figure 16] features five components:
@@ -185,7 +185,6 @@ We rather expect to accept and produce a variety of formats to interact with the
 external infrastructures and services that turn out to be useful for SciWIn
 users.
 
-
 The choice of CWL as workflow description language ensures that workflows
 created by SciWIn can be executed on a broad range of platforms
 [@cwlimplementations2025]. However, many of these platforms require significant
@@ -216,29 +215,31 @@ The main areas of sctivity of Measure 4.4 / SciWIn can therefore be listed as fo
   - sharing of computational workflows
   - collaboration platform for computational work
   - make workflows available for harvesting by FAIRagro-Search / Middleware
-  
-settled on the workflow description
-language CWL (@crusoe2022), on
-- Compute instances: in principle general CWL capable, in practice reana, in principle any Reana in practice our own
-- Workflow objects : Move from ARC as central data structure to multi-data container compatibility.
+3. Reana cluster
+  - Remote execution of computational workloads
 
-New components:
 
-AAI
-Client
-Hub
-Storage Instances
-Workflow objects now multi-paradigm compatibility
-based on provenance run crate.
+## SciWIn components - details
 
 ### SciWIn client
 
-+ requirements
-+ target group
+#### Requirements
+
++ overarching goal, business case
++ stakeholders
+  + target group
++ functional requirements
++ non-functional requirements
 + tech stack
 + use cases
 
-conceptual challenges
++ A client-part that works de-centralized, independent of any central infrastructure
+  as part of the scientists' daily toolset.
++ Serves to capture computational workflows with minimal effort in a standards
+  compliant way.
+
+
+#### conceptual challenges
 
 remote execution Reana wegen Multicloud
 workflow & data
@@ -246,9 +247,6 @@ remote reference
 dockerization
 
 ### Selection of CWL
-
-### Selection of 
-
 
 ### SciWIn-Hub
 
@@ -261,6 +259,8 @@ In progress
 + "CWL package manager"
 + Visualisierung von Workflows
 + cordra ...
+
+#### alterbative
 
 ## Development strategy
 
@@ -285,73 +285,6 @@ Outreach
 Workshop,
 Identify other consortia to co-operate
 reach out to other communities
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[diepenbroek2023] The concept of data integration is partly described in the RDC
-mediation layer and covered by semantic tools (Glöckner et al., 2020), and a
-concept for integrated data and process storage is part of the DataPLANTs ARC
-model (Krantz et al., 2021)
-
-## Overall structure: SciWIn-Client and SciWIn-Hub
-
-+ A client-part that works de-centralized, independent of any central infrastructure
-  as part of the scientists' daily toolset.
-+ Serves to capture computational workflows with minimal effort in a standards
-  compliant way.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
