@@ -221,11 +221,24 @@ The main areas of sctivity of Measure 4.4 / SciWIn can therefore be listed as fo
 
 ## SciWIn components - details
 
+### Requirements
+
+In proposal driven software development, the textbook recipes for requirements
+engineering do not work out of the box, since the usual stakeholder-structure is
+not present. In particular, a priory there are no "users" or "customers" that could be queried for requirements. Consequently, the acquisition of users has to be part of the project.
+
+**The overarching goal or business case** of SciWIn as specified by the
+FAIRagro-proposal [@ewert2023] is it to "promote FAIR RDM" by facilitating the
+reproducibility, the deployment and the publication of data analysis workflows
+and simulation models.
+
+
+easy-to-use interface  to work on and create new FAIR DO outputs with automatically annotated provenance graphs
+
+
 ### SciWIn client
 
-#### Requirements
-
-+ overarching goal, business case
++ 
 + stakeholders
   + target group
 + functional requirements
