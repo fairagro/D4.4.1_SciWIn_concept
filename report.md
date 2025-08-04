@@ -204,20 +204,27 @@ MC4NFDI proposal was rejected in the 7th submission round.
 
 ![New ecosystem sketch\label{newecosystem}](system.svg){ width=15cm}
 
-The main areas of sctivity of Measure 4.4 / SciWIn can therefore be listed as follows:
+The main areas of activity of Measure 4.4 / SciWIn can therefore be listed as follows:
 
 1. **The SciWIn-Client**
   - effortless recording of computational workflows in CWL
-  - remote execution of computational workflows
+  - local and remote execution of computational workflows
   - local management of multiple workflows
-  - authorization against an AAI
+  - import of workflows from remote sources
+  - export of workflows to remote targets
+  
 2. **SciWIn-Hub**
-  - sharing of computational workflows
-  - collaboration platform for computational work
+  - sharing of computational workflows (up- and download)
+  - authorization against an AAI
   - make workflows available for harvesting by FAIRagro-Search / Middleware
+  - stage workflows for publication on platforms such as [workflowhub.eu](workflowhub.eu), [https://workflow.earth/](https://workflow.earth/), [zenodo.org](zenodo.org).
+  - visualization of workflow-graphs
+  - graphical selectiona and manipulation
+  
 3. **Reana cluster**
   - Remote execution of computational workloads
-
+  - Capturing of output to produce complete Workflow Run RO-Crates [WRROC, @leo2024]
+  - Access management for computational ressources
 
 ## SciWIn components - details
 
@@ -231,6 +238,47 @@ not present. In particular, a priory there are no "users" or "customers" that co
 FAIRagro-proposal [@ewert2023] is it to "promote FAIR RDM" by facilitating the
 reproducibility, the deployment and the publication of data analysis workflows
 and simulation models.
+
+**FAIRagro-intrinsic requirements**
+
+Sources for intrinsic requirements are:
+ - Measure-inernal brainstorming regarding personal goals of the developers
+ - regular meetings with colleagues in Task Area 4 
+ - meetings with colleagues from other Task Areas
+ - feedback from the Community Advisory Board
+ 
+ While these requirements are not elicitated in a systematic fashion, are
+ expressed subjectively by various individuals and might change over time or
+ assume changing priorities, at the time of writing we identify the following
+ non-functional requirements for the software-output of Measure 4.4:
+ 
+ 1. demonstration of a PoC
+ 2. attract real use cases
+ 3. create synergies with other consortia and other external projects
+ 4. generate publications
+ 5. adoption of the software in multiple domains
+ 6. demonstration of research output that was made possible by use of SciWIn
+ 7. 
+ 
+ **User requirements**
+ 
+ In lieu of collecting requirements from the future users that can be found
+ through a customer relationship as in traditional software engineering [see
+ e.g. robertson2024], we initially rely on requirements that we devise ourselves, based on
+ our personal and consulting experience with regard to scientific computing and
+ research data mangement. User requirements might be summarized as
+ 
+ 1. create machine readable workflow descriptions
+ 2. integrate naturally into a common comman-line interface oriented style of interactive work
+ 3. have a low threshold of learning before scintific work efficiency increases
+ 4. provide an easy overview of numerous versions, runs, inputs, outputs
+ 5. provide an easy way to annotate worflows for re-used
+ 6. allow to annotate workflows for publication
+ 7. provide a way to publish workflows
+ 8. provide a frictionless way to access remote (powerful) computing ressources
+ 9. provide a tool to 
+ 
+ 
 
 
 easy-to-use interface  to work on and create new FAIR DO outputs with automatically annotated provenance graphs
