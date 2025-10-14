@@ -11,11 +11,11 @@ header-includes: |
   \usepackage{authblk}
   \usepackage{tikz}
   \usetikzlibrary{calc}
-
-title: "The concept of SciWIn as part of the reproducible science toolset in FAIRagro"
----
-
-<!-- The cutomized by-line -->
+                                                                                     
+title: "The concept of SciWIn as part of the reproducible science toolset in FAIRagro"                                                                                     
+---                                                                                  
+                                                                                     
+<!-- The cutomized by-line -->                                                       
 \setlength{\topskip}{1.5cm}
 \renewcommand\Authands{\normalfont\small \ and }
 \renewcommand\Authfont{\scshape\small}
@@ -33,7 +33,7 @@ title: "The concept of SciWIn as part of the reproducible science toolset in FAI
 <!-- The logo in the top left corner -->
 \tikz[remember picture,overlay,x=\paperwidth,y=\paperheight]{%
     \node[anchor=north west, inner sep=0pt]
-    at ($(current page.north west)+(.5cm, -.5cm)$)  {\includegraphics[width=5cm]{Fairagro_Logo_linksbuendig_Verlauf.png}};}
+    at ($(current page.north west)+(.5cm, -.5cm)$)  {\includegraphics[width=5cm]{Fair agro_Logo_linksbuendig_Verlauf.png}};}
 
 
 ## Thematic note
@@ -50,16 +50,23 @@ and consequently the thrust of its conceptualization.
 ### The missing Research Data Commons
 
 The proposal foresaw the integration of SciWIn into a joint infrastructure
-involving in particular an "RDC mediation layer" [@ewert2023], where "RDC" stands for "Research Data Commons".
+involving in particular an "RDC mediation layer" [@ewert2023], where "RDC" stands for
+"Research Data Commons".
 RDC was anticipated to become "an overarching virtual expandable infrastructure" [@glockner2020] hosting "cross-cutting services for the NFDI" [@bierwirth2020].
 While @glockner2020 and @bierwirth2020 are mere declarations of intent,
-the consortium NFDI4BioDiversity proposed to establish RDC as a cloud-based research infrastructure
+the consortium NFDI4BioDiversity proposed to establish RDC as a cloud-based research 
+infrastructure
 and provided a high-level architectural layered concept for RDC [@glockner2020a]
 into which SciWIn was supposed to be integrated.
 
-In addition to "RDC" as infrastructure, the term "RDC" was also used in the FAIRagro proposal in the sense of a set of criteria that services should fulfil be be interoperable with the NFDI-wide infrastructure. It was proposed that "FAIRagro will comply with the NFDI-RDC" and that "Storage Instances [of M4.4] ... will hold RDC-compliant FAIR DOs ..."
+In addition to "RDC" as infrastructure, the term "RDC" was also used in the FAIRagro 
+proposal in the sense of a set of criteria that services should fulfil be be interoper
+able with the NFDI-wide infrastructure. It was proposed that "FAIRagro will comply wit
+h the NFDI-RDC" and that "Storage Instances [of M4.4] ... will hold RDC-compliant FAIR
+ DOs ..."
 
-In June 2024 we organized a meeting with stakeholders from NFDI4Biodiversity, which were involved in the design and
+In June 2024 we organized a meeting with stakeholders from NFDI4Biodiversity, which w
+ere involved in the design and
 implementation of the NFDI4BioDiversity-specific RDC (Bio-RDC).
 It turned out that at that point in time, RDC existed as "a blueprint", an "architectural model" and a collection of specfic individual services, namely
 
@@ -75,8 +82,11 @@ It turned out that at that point in time, RDC existed as "a blueprint", an "arch
 The conceptual ideas had no actionable specification or reference implementation
 and also seemed to be still in flux. A move to a more domain-oriented
 decentralized architectural paradigm (["data mesh
-concept"](https://www.datamesh-architecture.com/)) was considered. The six approved RDC services on the other hand did not bear direct touching
-points with SciWIn or FAIRagro. A list of criteria that services should fulfil in order to be "RDC compliant" was planned by TA4 of NFDI4Biodiversity but not yet published.
+concept"](https://www.datamesh-architecture.com/)) was considered. The six
+approved R DC services on the other hand did not bear direct touching points
+with SciWIn or FAIRagro. A list of criteria that services should fulfil in order
+to be "RDC compliant" was planned by TA4 of NFDI4Biodiversity but not yet
+published.
 
 ### Changed Directions
 
@@ -123,33 +133,89 @@ The original idea of the SciWIn design, as laid out in an ecosystem map
 
 ![Original ecosystem idea for SciWIn [Figure 16 from @ewert2023]](oldsystem.png){width=15cm}
 
-In that conceptualization, only the "Workflow Hub" was supposed to be developed
-an a dedicated infrastructure item by SciWIn, while the other components are
-existing services that communicate with the "Workflow Hub". The main purpose of
-the "Workflow Hub" was the creation of "Workflow Objects". The actual desing at
-he time of writing differs from this early sketch. Figure \ref{newecosystem}
-depicts the current high-level conceptualization of the SciWIn ecosystem.
+## Nomenclature refinements
+
+In that conceptualization, only the "Workflow Hub" was supposed to be developed as a dedicated
+infrastructure item by SciWIn, while the other components are existing services that communicate with
+the “Workflow Hub”. The main purpose of the "Workflow Hub" was the provision of "an easy-to-use
+interface to work on and create new FAIR DO outputs with automatically annotated provenance
+graphs". "FAIR DO" stands for "FAIR Digital Objects", which is used for a quite abstract concept in
+the current literature. @schultes2019 state that FAIR Digital Objects "represent data,
+software or other research resources" and "must be accompanied by persistent identifiers, metadata
+and contextual documentation to enable discovery, citation and reuse". We slightly modify and
+sharpen and the meaning of the terms "FAIR DO" and "Workflow Object" for use in SciWIn and at
+the same time adapt their semantics to better fit the current implementation strategy:
+
+FAIR DO:
+
+: A serializable object that adheres to the definition of @schultes2019 above.
+This also implies that a FAIR Do resides in a suitable FAIR repository that
+provides discovery and citeability.
+
+Workflow Object:
+
+: A data structure that holds a definition of a computational workflow,
+associated data and software or pointers to them, along with provenance and
+version information for all these objects. The Workflow Object can be consumed
+by an execution engine, which then might return the Workflow Object amended with
+results of the execution of a computational workflow.
+
+## Re-conceptualization of the "Workflow Hub"
 
 Realizing that the main challenge to be solved lies in the provisioning of
 tooling for the easy creation of workflows, this task is now assigned to a
 stand-alone program that scientists use at their workstations in their daily
-workflow without requiring internet-access, a central service, or authorization.
-This stand-along program is called **SciWIn-Client**. The second important
-function of SciWIn-Client is the communication with compute instances to enable
-scientists to submit computational workflows for remote execution and fetch the
-results. SciWIn-Client thus implements the functionality that was assigned to
-"Workflow Hub" in the initial sketch in the proposal.
+habitual work without requiring internet-access, a central service, or
+authorization. This stand-along program is called **SciWIn-Client**. The program
+supports not only the creation but also the management of all aspects of
+Workflow Objects containing computational workflows. In particular, it
+facilitates sharing of and collaboration on Workflow Objects by providing import
+and export functions to suitable platforms.
+
+The second important function of SciWIn-Client is the communication with compute
+instances to enable scientists to submit computational workflows for remote
+execution and fetch the results. SciWIn-Client thus implements the functionality
+that was assigned to "Workflow Hub" in the initial sketch in the proposal.
+
+As a program that anybody can install on their computer, SciWIn-Client does not
+need an authentication service.
+
+## Re-conceptualization of "Storage Instances"
+
+The "Storage Instances" mentioned in the proposal that still exist are e!DAL-PGP
+and the BonaRes Repository. Those are established research repositories, just
+like OpenAgrar or Zenodo, that serve a wide range of research communities and
+users and have their own set of challenging requirements. "Storage Instances" in
+that sense are called "Repositories" from here on. They are run and operated by
+independent entities who in general have no interest to invest resources into
+fulfilling very specific requirements of FAIRagro. Therefore they are not suited
+to FAIRly realize the full potential of re-usable, re-combineable, modular
+computational workflows. The existing repositories are still useful in this
+context to publish workflows as citeable scientific output that is reliably
+preserved over long time-spans. However, a programmatically driven, non
+interactive submission of content is not possible with such repositories, and
+sometimes even reading data requires interactive operation. We therefore refrain
+from a tight technical integration of such repositories into SciWIn. We do
+expect that users search and find data and code in such repositories, ideally
+even packaged as a FAIR DO that can be consumed directly by SciWIn. Search of
+and access to some of those repositories, covering specific needs of FAIRagro
+and the agrosystem research community is provided by the products of M4.2 and
+M4.3, the "Middleware" and the "Search Service", respectively. We consider
+features for SciWIn-Client that ease the publication of Workflow Objects to such
+repositories by providing prompting for required metadata and specific
+formatting of such metadata for selected repositories.
+
+In that context we also consider more domain and/or workflow specific
+repositories such as [Workflow Hub](https://workflowhub.eu) or
+[ARChive](https://archive.nfdi4plants.org).
+
+
+
 
 In addition to SciWIn-Client we are planning to realize a second
 software-project within Measure 4.4, the **SciWIn-Hub**. The need for SciWIn-Hub
 stems from the realization that the data repositories ("Storage Instances" such
-as _e!DAL-PGP_, _Bonares_, _TISDAR_[^1] in the proposal) are not suited to
-FAIRly to realize the full potential of re-usable, re-combineable, modular
-computational workflows. The existing repositories are still useful in this
-context to publish workflows as citeable scientific output that is reliably
-preserved over long time-spans. However, a programatically driven, non
-interactive submission of content is not possible with such repositories, and
-sometimes even reading data requires interactive operation.
+as _e!DAL-PGP_, _Bonares_, _TISDAR_[^1] in the proposal) 
 
 **Access** to SciWIn-Hub and other services, such as the _FAIRagro Searchable
 Inventory of Services and Data_ [@ewert2023, pp. 94-96] and compute instances,
