@@ -5,17 +5,20 @@ classoption:
 papersize: a4
 fontsize: 11pt
 citation-style: apa
+link-citations: true
+link-bibliography: true
 bibliography: bibliography.bib
 header-includes: |
   \usepackage{orcidlink}
   \usepackage{authblk}
   \usepackage{tikz}
   \usetikzlibrary{calc}
+  \hypersetup{colorlinks=true,linkcolor=blue, linktocpage}
                                                                                      
-title: "The concept of SciWIn as part of the reproducible science toolset in FAIRagro"                                                                                     
----                                                                                  
-                                                                                     
-<!-- The cutomized by-line -->                                                       
+title: "The concept of SciWIn as part of the reproducible science toolset in FAIRagro"
+---
+
+<!-- The cutomized by-line -->
 \setlength{\topskip}{1.5cm}
 \renewcommand\Authands{\normalfont\small \ and }
 \renewcommand\Authfont{\scshape\small}
@@ -28,13 +31,12 @@ title: "The concept of SciWIn as part of the reproducible science toolset in FAI
 \affil[2]{ Leibniz Institute of Plant Genetics and Crop Plant Research (IPK), Gatersleben}
 
 \maketitle
-\vspace{-1cm}
+\vspace{-1cm} 
 
 <!-- The logo in the top left corner -->
 \tikz[remember picture,overlay,x=\paperwidth,y=\paperheight]{%
     \node[anchor=north west, inner sep=0pt]
-    at ($(current page.north west)+(.5cm, -.5cm)$)  {\includegraphics[width=5cm]{Fair agro_Logo_linksbuendig_Verlauf.png}};}
-
+    at ($(current page.north west)+(.5cm, -.5cm)$) {\includegraphics[width=5cm]{Fairagro_Logo_linksbuendig_Verlauf.png}};}
 
 ## Thematic note
 
@@ -182,49 +184,50 @@ need an authentication service.
 
 ## Re-conceptualization of "Storage Instances"
 
-The "Storage Instances" mentioned in the proposal that still exist are e!DAL-PGP
-and the BonaRes Repository. Those are established research repositories, just
-like OpenAgrar or Zenodo, that serve a wide range of research communities and
-users and have their own set of challenging requirements. "Storage Instances" in
-that sense are called "Repositories" from here on. They are run and operated by
-independent entities who in general have no interest to invest resources into
-fulfilling very specific requirements of FAIRagro. Therefore they are not suited
-to FAIRly realize the full potential of re-usable, re-combineable, modular
-computational workflows. The existing repositories are still useful in this
-context to publish workflows as citeable scientific output that is reliably
-preserved over long time-spans. However, a programmatically driven, non
-interactive submission of content is not possible with such repositories, and
-sometimes even reading data requires interactive operation. We therefore refrain
-from a tight technical integration of such repositories into SciWIn. We do
-expect that users search and find data and code in such repositories, ideally
-even packaged as a FAIR DO that can be consumed directly by SciWIn. Search of
-and access to some of those repositories, covering specific needs of FAIRagro
-and the agrosystem research community is provided by the products of M4.2 and
-M4.3, the "Middleware" and the "Search Service", respectively. We consider
-features for SciWIn-Client that ease the publication of Workflow Objects to such
-repositories by providing prompting for required metadata and specific
-formatting of such metadata for selected repositories.
-
-In that context we also consider more domain and/or workflow specific
-repositories such as [Workflow Hub](https://workflowhub.eu) or
+The "Storage Instances" mentioned in the proposal that still exist are
+[e!DAL-PGP](https://edal-pgp.ipk-gatersleben.de/) and the [BonaRes
+Repository](https://maps.bonares.de/mapapps/resources/apps/bonares/index.html?lang=en).
+Those are established research repositories, just like
+[OpenAgrar](https://www.openagrar.de) or [Zenodo](https://zenodo.org/), that
+serve a wide range of research communities and users and have their own set of
+challenging requirements. "Storage Instances" in that sense are called
+"Repositories" from here on. They are run and operated by independent entities
+who in general have no interest to invest resources into fulfilling very
+specific requirements of FAIRagro. Therefore they are not suited to FAIRly
+realize the full potential of re-usable, re-combineable, modular computational
+workflows. The existing repositories are still useful in this context to publish
+workflows as citeable scientific output that is reliably preserved over long
+time-spans. However, a programmatically driven, non interactive submission of
+content is not possible with such repositories, and sometimes even reading data
+requires interactive operation. We therefore refrain from a tight technical
+integration of such repositories into SciWIn. We do expect that users search and
+find data and code in such repositories, ideally even packaged as a FAIR DO that
+can be consumed directly by SciWIn. Search of and access to some of those
+repositories, covering specific needs of FAIRagro and the agrosystem research
+community is provided by the products of M4.2 and M4.3, the "Middleware" and the
+"Search Service", respectively. We consider features for SciWIn-Client that ease
+the publication of Workflow Objects to such repositories by providing prompting
+for required metadata and specific formatting of such metadata for selected
+repositories. In that context we also consider more domain and/or workflow
+specific repositories such as [Workflow Hub](https://workflowhub.eu) or
 [ARChive](https://archive.nfdi4plants.org).
 
+While such repositories are suited to publish FAIR DOs which have reached a
+certain level of quality, are sufficiently annotated with metadata and should be
+re-usable by researchers outside the lab or project where they originated, our
+idea of SciWIn also includes a way to share workflows, or more precisely
+Workflow Objects in a more ad-hoc, intermittent, less formal, easy manner that
+supports seamless cooperation but doesn't aim at producing citeable scientific
+output. As will become clear in the following section, any webservice that
+provides access to Git repositories will work for that purpose. Institutional
+installations of servcies such as [GitLab](https://gitlab.com/gitlab-org/gitlab)
+or [Forgejo](https://forgejo.org/), or even commercial platforms such as
+[Bitbucket](https://bitbucket.org/), [GitLab.com](https://gitlab.com) or
+[GitHub](https://github.com/) can be used.
 
+## Concretization of "Workflow Objects"
 
-
-In addition to SciWIn-Client we are planning to realize a second
-software-project within Measure 4.4, the **SciWIn-Hub**. The need for SciWIn-Hub
-stems from the realization that the data repositories ("Storage Instances" such
-as _e!DAL-PGP_, _Bonares_, _TISDAR_[^1] in the proposal) 
-
-**Access** to SciWIn-Hub and other services, such as the _FAIRagro Searchable
-Inventory of Services and Data_ [@ewert2023, pp. 94-96] and compute instances,
-will be managed by the NFDI-wide Base4NFDI project IAM4NFDI, that is supported
-by the Working Group Identity and Access Management [@pempe2022]. Integration of
-this AAI solution into FAIRagro is performed by FAIRagro Measure 4.2.
-**SciWIn-Client** will implement the respective authorization protocol.
-
-**Workflow objects** in the SciWIn-context are data structures that encapsulate
+**Workflow Objects** in the SciWIn-context are data structures that encapsulate
 the definition of workflows with associated code and data or references to code
 and data. Since a close collaboration between FAIRagro and NFDI Consortium
 DataPLANT is established on different levels, we have taken into account their
@@ -267,6 +270,14 @@ through an informal collaboaration. Furthermore, the BASE4NFDI project MC4NFDI
 (​_A Multicloud Infrastructure for the NFDI_) would have ensured robust,
 well-integrated access to Reana clusters for users of SciWIn. Unfortunately, the
 MC4NFDI proposal was rejected in the 7th submission round.
+
+**Access** to SciWIn-Hub and other services, such as the _FAIRagro Searchable
+Inventory of Services and Data_ [@ewert2023, pp. 94-96] and compute instances,
+will be managed by the NFDI-wide Base4NFDI project IAM4NFDI, that is supported
+by the Working Group Identity and Access Management [@pempe2022]. Integration of
+this AAI solution into FAIRagro is performed by FAIRagro Measure 4.2.
+**SciWIn-Client** will implement the respective authorization protocol.
+
 
 ![New ecosystem sketch\label{newecosystem}](system.svg){ width=15cm}
 
@@ -476,34 +487,3 @@ reach out to other communities
 
 
 
-
-# Quotes to be mined
-
-Develop the concept of SciWIn (Measure 4.4) jointly together under the umbrella of the
-NFDI-RDC and collaborate with NFDI4BioDiversity and DataPLANT as well as the
-prototypic container deployment to the de.NBI cloud node at BLU;
-
-
-A SciWIn pilot will be rolled out at de.NBI operated by Bielefeld University (BLU).
-
-The concept of data integration is
-partly described in the RDC mediation layer and covered by semantic tools (Glöckner et al.,
-2020), and a concept for integrated data and process storage is part of the DataPLANTs ARC
-model (Krantz et al., 2021), but a fully integrated infrastructure is provided by neither of those
-consortia. Therefore, Measure 4.4 will extend the two architectural designs and provide a
-workflow infrastructure that applies the FAIR DO concepts (Measure 3.5), the service
-middleware components (Measure 4.2) and its own workflow hub as an easy-to-use interface
-to work on and create new FAIR DO outputs with automatically annotated provenance graphs.
-
-SciWIn will be part of the NFDI cross-cutting topic “RDC implementations”, and therefore, its
-concept will be developed as a joint effort between FAIRagro, FAIR-DS, Dataplant and the NFDI
-section, RDC [as part of cross-cutting topics (Ebert et al., 2021)]. Coordinated in Measure 5.3,
-the SciWIn working group brings these stakeholders together and will be initiated by a kickoff
-meeting (M4.4.1). Thus, the fundamental principles, architectures and interfaces are described,
-and a coordinated concept will be created and published (D4.4.1), which will incorporate the
-RDC ideas and DataPLANTs ARC model.
-
-
-[^1]: TISDAR is now called "Thünen-Atlas" and refers to the public repository of
-    geospatial data at the Thünen Institute:
-    [atlas.thuenen.de](https://atlas.thuenen.de).
