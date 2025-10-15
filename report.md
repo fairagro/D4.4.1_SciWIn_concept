@@ -374,3 +374,5 @@ NEXT-Gen-EXPERT](https://fairagro.net/en/community/use-cases/use-case-7/).
 Version 1.0.0 was released Sep. 24, 2025. SciWIn-Client currently consists of
 over 15000 lines of Rust and has an extensive [documentation and
 tutorial](https://fairagro.github.io/m4.4_sciwin_client/).
+
+\pagebreak
