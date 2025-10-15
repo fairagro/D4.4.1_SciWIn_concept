@@ -231,7 +231,7 @@ Workflow bjects in the SciWIn-context are data structures that encapsulate the
 definition of workflows with associated code and data or references to code and
 data. Since a close collaboration between FAIRagro and NFDI Consortium DataPLANT
 is established on different levels, we have taken into account their version of
-a Workflow Objects, the **Annotated Research Context (ARC)** [@dataplant205],
+a Workflow Objects, the **Annotated Research Context (ARC)** [@dataplant2025],
 and the established standards on which it is based. These are the **Common
 Workflow Language** [@crusoe2022] to specify computational workflows and the
 **Research Object Crate** [RO-Crate, @soiland-reyes2022] as a data structure to
@@ -257,7 +257,7 @@ SciWIn are met.
 ## Implementation of Compute Instances
 
 The choice of CWL as workflow description language ensures that workflows
-created by SciWIn can be executed on a broad range of platforms
+created by SciWIn-Client can be executed on a broad range of platforms
 [@cwlimplementations2025]. However, many of these platforms require significant
 ressources for setup and operation. Different platforms have different sets of
 compute backends, such as HTCondor, AWS, Azure, SLURM and Kubernetes.
@@ -271,54 +271,41 @@ simple access to an instance at the Leibniz-Institute for Astrophysics Potsdam
 through an informal collaboaration. Furthermore, the BASE4NFDI project MC4NFDI
 (​_A Multicloud Infrastructure for the NFDI_) would have ensured robust,
 well-integrated access to Reana clusters for users of SciWIn. Unfortunately, the
-MC4NFDI proposal was rejected in the 7th submission round.
+MC4NFDI proposal was rejected in the $7^{th}$ submission round.
 
-**Access** to SciWIn-Hub and other services, such as the _FAIRagro Searchable
-Inventory of Services and Data_ [@ewert2023, pp. 94-96] and compute instances,
-will be managed by the NFDI-wide Base4NFDI project IAM4NFDI, that is supported
-by the Working Group Identity and Access Management [@pempe2022]. Integration of
-this AAI solution into FAIRagro is performed by FAIRagro Measure 4.2.
-**SciWIn-Client** will implement the respective authorization protocol.
+To create robust and reliable access to compute instances that can scale to
+real-world workloads and be used by FAIRagro-associated researchers, we deploy
+and configure our own Reana-Installation on a Kubernetes cluster in the
+de.NBI-cloud. We also set up and configure the Kubernetes cluster to fully
+control and be able to experiment the remote execution feature of SciWIn-Client.
+
+## The role of Authentication \& Authorization
+
+Access to Reana and other services, such as the _FAIRagro Searchable Inventory
+of Services and Data_ [@ewert2023, pp. 94-96] will be managed by the NFDI-wide
+Base4NFDI project IAM4NFDI, that is supported by the Working Group Identity and
+Access Management [@pempe2022]. Integration of this AAI solution into FAIRagro
+is performed by FAIRagro Measure 4.2. **SciWIn-Client** will support the
+respective authorization protocol to allow for the seamless remote execution of
+computational workloads for authorized users.
 
 
 ![New ecosystem sketch\label{newecosystem}](system.svg){ width=15cm}
 
-The main areas of activity of Measure 4.4 / SciWIn can therefore be listed as follows:
-
-1. **The SciWIn-Client**
-  - effortless recording of computational workflows in CWL
-  - local and remote execution of computational workflows
-  - local management of multiple workflows
-  - import of workflows from remote sources
-  - export of workflows to remote targets
-  
-2. **SciWIn-Hub**
-  - sharing of computational workflows (up- and download)
-  - authorization against an AAI
-  - make workflows available for harvesting by FAIRagro-Search / Middleware
-  - stage workflows for publication on platforms such as [workflowhub.eu](workflowhub.eu), [https://workflow.earth/](https://workflow.earth/), [zenodo.org](zenodo.org).
-  - visualization of workflow-graphs
-  - graphical selectiona and manipulation
-  
-3. **Reana cluster**
-  - Remote execution of computational workloads
-  - Capturing of output to produce complete Workflow Run RO-Crates [WRROC, @leo2024]
-  - Access management for computational ressources
-
-## SciWIn components - details
-
-### Requirements
+## Current requirements
 
 In proposal driven software development, the textbook recipes for requirements
 engineering do not work out of the box, since the usual stakeholder-structure is
-not present. In particular, a priory there are no "users" or "customers" that could be queried for requirements. Consequently, the acquisition of users has to be part of the project.
+not present. In particular, a priori there are no "users" or "customers" that
+could be queried for requirements. Consequently, the acquisition of users has to
+be part of the project.
 
 **The overarching goal or business case** of SciWIn as specified by the
 FAIRagro-proposal [@ewert2023] is it to "promote FAIR RDM" by facilitating the
 reproducibility, the deployment and the publication of data analysis workflows
 and simulation models.
 
-**FAIRagro-intrinsic requirements**
+### FAIRagro-intrinsic requirements
 
 Sources for intrinsic requirements are:
  - Measure-inernal brainstorming regarding personal goals of the developers
@@ -326,9 +313,9 @@ Sources for intrinsic requirements are:
  - meetings with colleagues from other Task Areas
  - feedback from the Community Advisory Board
  
- While these requirements are not elicitated in a systematic fashion, are
- expressed subjectively by various individuals and might change over time or
- assume changing priorities, at the time of writing we identify the following
+ These requirements are not elicitated in a systematic fashion, are expressed
+ subjectively by various individuals and might change over time or assume
+ changing priorities. At the time of writing we identify the following
  non-functional requirements for the software-output of Measure 4.4:
  
  1. demonstration of a PoC
@@ -337,155 +324,51 @@ Sources for intrinsic requirements are:
  4. generate publications
  5. adoption of the software in multiple domains
  6. demonstration of research output that was made possible by use of SciWIn
- 7. 
  
- **User requirements**
+### User requirements
  
  In lieu of collecting requirements from the future users that can be found
- through a customer relationship as in traditional software engineering [see
- e.g. robertson2024], we initially rely on requirements that we devise ourselves, based on
- our personal and consulting experience with regard to scientific computing and
- research data mangement. User requirements might be summarized as
+ through a customer relationship in traditional software engineering [see e.g.
+ robertson2024], we initially relied on requirements that we devise ourselves,
+ based on our personal and consulting experience with regard to scientific
+ computing and research data management. Since then we could augment these
+ requirements with information from users and potential users gathered at events
+ such as the FAIRagro Plenary.
  
- 1. create machine readable workflow descriptions
- 2. integrate naturally into a common comman-line interface oriented style of interactive work
- 3. have a low threshold of learning before scintific work efficiency increases
- 4. provide an easy overview of numerous versions, runs, inputs, outputs
- 5. provide an easy way to annotate worflows for re-used
- 6. allow to annotate workflows for publication
- 7. provide a way to publish workflows
- 8. provide a frictionless way to access remote (powerful) computing ressources
- 9. provide a tool to 
+The currently considered requirement of SciWIn-Client can be roughly summarized
+as follows. Note however, that we follow an agile approch and continuously
+gather feedback from users and potential users. Priorization of features
+therefore changes as as project progresses
  
+ - create machine readable workflow descriptions in a user-friendly manner
+ - integrate naturally into a common command-line interface oriented style of interactive work
+ - have a low threshold of learning before scientific work efficiency increases
+ - provide an easy overview of numerous versions, runs, inputs, outputs
+ - provide an easy way to annotate worflows for re-use
+ - provide an easy way for ad-hoc sharing of workflows
+ - allow to annotate workflows for publication
+ - provide a way to publish workflows as FAIR DOs in common repositories
+ - allow for local execution of workflows
+ - provide a frictionless way to access remote (powerful) computing resources
+ - record provenance information for workflows
+ - provide a graphical representation of workflows
+ - provide a graphical interface to manipulate workflows (connecting and splitting workflows)
  
+### Strategic requirements
 
+The most salient non-functional requirements are:
+  - the need to fit into the FAIRagro landscape of tools and services, and
+  - the need to be compatible with the DataPLANT ecosystem of tools, services and data structures.
+  
+This section remains vague, because these requirements are in the process of
+being co-created with our colleagues in FAIRagro and DataPLANT.
 
-easy-to-use interface  to work on and create new FAIR DO outputs with automatically annotated provenance graphs
+## State of the Implementation
 
-
-### SciWIn client
-
-+ 
-+ stakeholders
-  + target group
-+ functional requirements
-+ non-functional requirements
-+ tech stack
-+ use cases
-
-+ A client-part that works de-centralized, independent of any central infrastructure
-  as part of the scientists' daily toolset.
-+ Serves to capture computational workflows with minimal effort in a standards
-  compliant way.
-
-
-#### conceptual challenges
-
-remote execution Reana wegen Multicloud
-workflow & data
-remote reference
-dockerization
-
-### Selection of CWL
-
-### SciWIn-Hub
-
-In progress 
-+ requirements
-+ target group
-+ tech stack
-+ use cases
-
-+ "CWL package manager"
-+ Visualisierung von Workflows
-+ cordra ...
-
-
-## Development Strategy
-
-The development strategy for SciWIn follows a pragmatic, research-oriented approach that prioritizes reproducibility, interoperability, and ease of adoption by the scientific community. Based on the implementation of the SciWIn-Client as evidenced in the fairagro/m4.4_sciwin_client repository, several key strategic decisions have shaped the project's development trajectory.
-
-### Technology Stack and Language Choice
-
-
-The selection of Rust as the primary programming language for SciWIn-Client represents a strategic decision to balance performance, safety, and cross-platform compatibility. Rust's memory safety guarantees eliminate entire classes of runtime errors that are common in scientific computing environments, while its zero-cost abstractions ensure optimal performance for computationally intensive workflow operations. The language's robust package management system (Cargo) facilitates modular development and dependency management, crucial for a tool that must integrate with diverse scientific computing environments.
-### Modular Architecture Strategy
-
-The SciWIn-Client employs a modular workspace architecture that separates concerns into distinct crates, enabling independent development and testing of different functionalities. This architectural decision supports:
-
-- **Maintainability**: Individual components can be updated and tested in isolation
-- **Extensibility**: New workflow formats and execution backends can be added without affecting core functionality
-- **Reusability**: Core components can be leveraged by other projects within the FAIRagro ecosystem
-
-### Standards-Based Interoperability
-
-A cornerstone of the development strategy is the adoption of established, domain-agnostic standards rather than proprietary formats. The implementation of Common Workflow Language (CWL) as the primary workflow description format ensures broad compatibility with existing workflow execution platforms. This standards-based approach addresses the project's goal of cross-domain applicability and reduces the risk of vendor lock-in or format obsolescence.
-
-### Developer Experience and Accessibility
-
-The development strategy emphasizes lowering barriers to adoption through intuitive command-line interfaces and comprehensive tooling. The SciWIn-Client provides researchers with familiar Git-like workflow tracking capabilities, allowing them to leverage existing version control knowledge. The tool's design philosophy prioritizes:
-
-- **Minimal learning curve**: Familiar command patterns and clear documentation
-- **Offline capability**: Core functionality works without internet connectivity
-- **Platform independence**: Cross-platform support through Rust's compilation targets
-
-### Quality Assurance and Testing Strategy
-
-The project implements a comprehensive testing strategy using Cargo's built-in testing framework, with both unit and integration tests ensuring reliability across different operating systems and workflow configurations. The dual-licensing approach (Apache 2.0 and MIT) reflects a commitment to open science principles while providing flexibility for different institutional requirements.
-
-### Incremental Development and Community Engagement
-
-The development follows an incremental approach, with early releases focusing on core functionality and subsequent versions adding advanced features based on user feedback. The GitHub-based development workflow enables transparent community involvement and contribution, supporting the broader NFDI goal of collaborative infrastructure development.
-
-### Integration Strategy
-
-Rather than developing isolated tools, the SciWIn development strategy emphasizes integration with existing scientific computing infrastructure. This includes compatibility with container technologies, support for various execution backends, and design considerations for future integration with Base4NFDI services such as IAM4NFDI for authentication and authorization.
-
-The overall development strategy positions SciWIn as a bridge between researchers' local development environments and distributed computing resources, supporting both current scientific workflows and future infrastructure developments within the NFDI ecosystem.
-
-## Interaction within FAIRagro
-
-SciWIn's integration within the FAIRagro ecosystem is designed to create synergies across multiple measures and task areas while supporting the consortium's overarching goals of FAIR data management and reproducible science. The interaction strategy encompasses technical integration, user support, and collaborative development approaches.
-
-### Technical Integration with FAIRagro Infrastructure
-
-**Search and Discovery Integration**: SciWIn workflows are designed to be discoverable through the FAIRagro Searchable Inventory of Services and Data [@ewert2023, pp. 94-96]. The standardized metadata format based on RO-Crate enables automated harvesting and indexing of workflow descriptions, making computational processes findable alongside datasets. This integration ensures that researchers can discover not only relevant data but also the computational methods used to process and analyze it.
-
-**Middleware Connectivity**: Through Measure 4.2's service middleware components, SciWIn-Client interfaces with FAIRagro's broader service ecosystem. This includes authentication and authorization services that will be provided by Base4NFDI's IAM4NFDI, enabling seamless access to protected computational resources and data repositories within the consortium.
-
-**Data Repository Integration**: While existing FAIRagro data repositories (e!DAL-PGP, BonaRes, Thünen-Atlas) serve as long-term preservation systems for workflow outputs, SciWIn-Hub provides the complementary functionality of active workflow sharing and collaboration. This dual approach ensures both the permanence required for scientific reproducibility and the agility needed for active research collaboration.
-
-### User Support and Community Engagement
-
-**Helpdesk and Support Services**: SciWIn benefits from and contributes to FAIRagro's distributed support model. Domain experts within the consortium provide specialized guidance on workflow development for specific agricultural and environmental research contexts, while the SciWIn development team offers technical support for tool usage and integration challenges.
-
-**Training and Capacity Building**: The SciWIn team actively participates in FAIRagro's training and outreach activities, developing educational materials and conducting workshops that demonstrate the integration of workflow management with FAIR data principles. These activities target different user groups, from individual researchers to institutional data managers, ensuring broad adoption across the agrosystem science community.
-
-**Use Case Development**: Collaboration with FAIRagro's domain working groups has yielded concrete use cases that drive SciWIn's development priorities. These include scenarios such as multi-site agricultural modeling, environmental monitoring data processing, and cross-scale analysis workflows that combine field observations with satellite data. Each use case informs both technical requirements and user experience design decisions.
-
-### Collaborative Development and Governance
-
-**Cross-Measure Collaboration**: SciWIn development involves close coordination with other FAIRagro measures, particularly Measure 3.5 (FAIR Digital Objects) for metadata standards, Measure 4.2 (service middleware) for infrastructure integration, and various domain-specific measures for use case validation and requirements gathering.
-
-**Community Feedback Integration**: The open development model of SciWIn incorporates feedback from the broader FAIRagro community through regular demonstration sessions, user testing programs, and participation in consortium-wide technical discussions. This collaborative approach ensures that development priorities align with actual research needs across the diverse FAIRagro partner institutions.
-
-**Standards Harmonization**: SciWIn actively participates in FAIRagro's efforts to harmonize metadata standards and interoperability protocols across the consortium. The adoption of CWL and RO-Crate supports this harmonization while enabling integration with tools and services developed by other measures.
-
-The interaction model positions SciWIn not as an isolated tool but as an integral component of FAIRagro's research infrastructure, supporting the consortium's mission of enabling FAIR and reproducible agrosystem science through enhanced computational workflow capabilities.
-
-## Interaction within NFDI and beyond
-
-+ BASE4NFDI (KG4NFDI, MC (Reana), IAM4NFDI)
-
-
-
-## Towards the establishment of SciWIn as a common tool for computational workflows
-
-Use cases,
-Outreach
-Workshop,
-Identify other consortia to co-operate
-reach out to other communities
-
-
-
+[SciWIn-Client](https://github.com/fairagro/m4.4_sciwin_client) has reached a
+state where it can be used independently by projects such as FAIRagro Use Cases,
+i.e. [Use Case 7,
+NEXT-Gen-EXPERT](https://fairagro.net/en/community/use-cases/use-case-7/).
+Version 1.0.0 was released Sep. 24, 2025. SciWIn-Client currently consists of
+over 15000 lines of Rust and has an extensive [documentation and
+tutorial](https://fairagro.github.io/m4.4_sciwin_client/).
