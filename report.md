@@ -18,7 +18,7 @@ header-includes: |
 title: "The concept of SciWIn as part of the reproducible science toolset in FAIRagro"
 ---
 
-<!-- The cutomized by-line -->
+<!-- The customized by-line -->
 \setlength{\topskip}{1.5cm}
 \renewcommand\Authands{\normalfont\small \ and }
 \renewcommand\Authfont{\scshape\small}
@@ -42,7 +42,7 @@ title: "The concept of SciWIn as part of the reproducible science toolset in FAI
 
 This text is deliverable D4.4.1 of Measure 4.4. in Task Area 4 of the NFDI
 consortium FAIRagro. "SciWIn" stands for **Sci**entific **W**orkflow
-**In**frastructure and denotes the overall delivrable of Measure 4.4. This
+**In**frastructure and denotes the overall deliverable of Measure 4.4. This
 document concludes Action 1 of Measure 4.4. The title set forth in the proposal
 [@ewert2023] was "Joint concept of SciWIn as part of the RDC semantic toolset"
 Several assumptions made at the time of writing the proposal did not
@@ -61,16 +61,16 @@ infrastructure
 and provided a high-level architectural layered concept for RDC [@glockner2020a]
 into which SciWIn was supposed to be integrated.
 
-In addition to "RDC" as infrastructure, the term "RDC" was also used in the FAIRagro 
-proposal in the sense of a set of criteria that services should fulfil be be interoper
-able with the NFDI-wide infrastructure. It was proposed that "FAIRagro will comply wit
-h the NFDI-RDC" and that "Storage Instances [of M4.4] ... will hold RDC-compliant FAIR
- DOs ..."
+In addition to "RDC" as infrastructure, the term "RDC" was also used in the
+FAIRagro proposal in the sense of a set of criteria that services should fulfill
+be be inter-operable with the NFDI-wide infrastructure. It was proposed that
+"FAIRagro will comply wit h the NFDI-RDC" and that "Storage Instances [of M4.4]
+... will hold RDC-compliant FAIR DOs ..."
 
 In June 2024 we organized a meeting with stakeholders from NFDI4Biodiversity, which w
 ere involved in the design and
 implementation of the NFDI4BioDiversity-specific RDC (Bio-RDC).
-It turned out that at that point in time, RDC existed as "a blueprint", an "architectural model" and a collection of specfic individual services, namely
+It turned out that at that point in time, RDC existed as "a blueprint", an "architectural model" and a collection of specific individual services, namely
 
  + An image annotation software, [BIIGLE](https://biigle.de/)
  + The terminology-related [BiodivPortal](biodivportal.gfbio.org) (not reachable at
@@ -86,7 +86,7 @@ and also seemed to be still in flux. A move to a more domain-oriented
 decentralized architectural paradigm (["data mesh
 concept"](https://www.datamesh-architecture.com/)) was considered. The six
 approved R DC services on the other hand did not bear direct touching points
-with SciWIn or FAIRagro. A list of criteria that services should fulfil in order
+with SciWIn or FAIRagro. A list of criteria that services should fulfill in order
 to be "RDC compliant" was planned by TA4 of NFDI4Biodiversity but not yet
 published.
 
@@ -95,7 +95,7 @@ published.
 Under these circumstances we had to deal with the fact that there did not exist
 an "RDC" or an "RDC semantic toolset" into which SciWIn could have been
 meaningfully integrated. Also the realization of such a thing did not seem
-likely in a timeframe that would allow to take it into account in the planning
+likely in a time-frame that would allow to take it into account in the planning
 and design of SciWIn. Another consequence of the lack of RDC or a clear path
 towards its realization was the lack of FAIRagro external cooperation partners
 to develop a "joint concept" with respect to "the RDC semantic toolset".
@@ -108,15 +108,15 @@ concept were actually implemented, and 2) maximize cross-domain usage,
 usefulness and synergies in any case:
 
 1. While primarily use-cases and requirement from the agrosystem science
-   community drive SciWIn's developent in FAIRagro, it should nevertheless be
+   community drive SciWIn's development in FAIRagro, it should nevertheless be
    domain-agnostic and potentially unleash its full potential also in other
    quantitative research domains.
 2. SciWIn tools and services should be easily accessible for researchers from
-   other NFDI concortial and other domains in general. 
+   other NFDI consortia and other domains in general. 
 3. SciWIn should be based on data formats and protocols that are well
    established, domain-agnostic and future-proof to maximize the chances for
    wide adoption and interoperability.
-4. SciWIn should actively exploit existing servcies and services that are currently  
+4. SciWIn should actively exploit existing services and services that are currently  
    being developed
    + to avoid re-invention of the wheel,
    + to increase development efficiency and
@@ -220,7 +220,7 @@ Workflow Objects in a more ad-hoc, intermittent, less formal, easy manner that
 supports seamless cooperation but doesn't aim at producing citeable scientific
 output. As will become clear in the following section, any webservice that
 provides access to Git repositories will work for that purpose. Institutional
-installations of servcies such as [GitLab](https://gitlab.com/gitlab-org/gitlab)
+installations of services such as [GitLab](https://gitlab.com/gitlab-org/gitlab)
 or [Forgejo](https://forgejo.org/), or even commercial platforms such as
 [Bitbucket](https://bitbucket.org/), [GitLab.com](https://gitlab.com) or
 [GitHub](https://github.com/) can be used. We aim in particular to make
@@ -229,7 +229,7 @@ SciWIn-based collaboration on computational workflows.
 
 ## Concretization of "Workflow Objects"
 
-Workflow bjects in the SciWIn-context are data structures that encapsulate the
+Workflow objects in the SciWIn-context are data structures that encapsulate the
 definition of workflows with associated code and data or references to code and
 data. Since a close collaboration between FAIRagro and NFDI Consortium DataPLANT
 is established on different levels, we have taken into account their version of
@@ -243,16 +243,16 @@ infrastructure of DataPLANT is an important piece to achieve synergies with this
 consortium covering a neighboring research domain, CWL and RO-Crate represent
 the state-of-the art for workflow descriptions and semantically annotated
 metadata formats. Therefore, they are also used or considered by other NFDI
-consortial, e.g. NFDI4Ing [@bronger2022] and NFDI4Health [@lobe2024].
-Furthermore, the semanitic annotation of metadata allows for the integration of
+consortia, e.g. NFDI4Ing [@bronger2022] and NFDI4Health [@lobe2024].
+Furthermore, the semantic annotation of metadata allows for the integration of
 such Workflow Objects into knowledge graphs that interconnect different domains.
 
 ARCs are Git repositories and therefore contain the version history of code,
-data and metadata. While ARCs allow for workflow represenations as CWL, they do
+data and metadata. While ARCs allow for workflow representations as CWL, they do
 not require the representation of the full provenance information of a
 workflow's elements. M4.4 aims to work with DataPLANT towards a common ARC
 specification and its corresponding RO-Crate profile, so that both, DataPLANT's
-compatibilty requirements with related standards such as the ISA-model
+compatibility requirements with related standards such as the ISA-model
 [@sansone2016] and the usability and workflow-representation requirements of
 SciWIn are met.
 
@@ -261,8 +261,8 @@ SciWIn are met.
 The choice of CWL as workflow description language ensures that workflows
 created by SciWIn-Client can be executed on a broad range of platforms
 [@cwlimplementations2025]. However, many of these platforms require significant
-ressources for setup and operation. Different platforms have different sets of
-compute backends, such as HTCondor, AWS, Azure, SLURM and Kubernetes.
+resources for setup and operation. Different platforms have different sets of
+compute back-ends, such as HTCondor, AWS, Azure, SLURM and Kubernetes.
 Additionally, the interaction with remote **compute instances** differs from
 platform to platform. Therefore, in order to experiment with remote execution of
 workflows and be able to pilot the whole range of SciWIn functionality, we have
@@ -270,7 +270,7 @@ settled on **Reana** [@simko2019] as primary execution platform. Originating
 from CERN, Reana is widely used and under active development since 8 years. Our
 main reason to settle on Reana however was the fact that NFDI4PUNCH provided us
 simple access to an instance at the Leibniz-Institute for Astrophysics Potsdam
-through an informal collaboaration. Furthermore, the BASE4NFDI project MC4NFDI
+through an informal collaboration. Furthermore, the BASE4NFDI project MC4NFDI
 (​_A Multicloud Infrastructure for the NFDI_) would have ensured robust,
 well-integrated access to Reana clusters for users of SciWIn. Unfortunately, the
 MC4NFDI proposal was rejected in the $7^{th}$ submission round.
@@ -279,16 +279,19 @@ To create robust and reliable access to compute instances that can scale to
 real-world workloads and be used by FAIRagro-associated researchers, we deploy
 and configure our own Reana-Installation on a Kubernetes cluster in the
 de.NBI-cloud. We also set up and configure the Kubernetes cluster to fully
-control and be able to experiment the remote execution feature of SciWIn-Client.
+control and be able to experiment with the remote execution feature of
+SciWIn-Client.
 
 ## The role of Authentication \& Authorization
 
 Access to Reana and other services, such as the _FAIRagro Searchable Inventory
-of Services and Data_ [@ewert2023, pp. 94-96] will be managed by the NFDI-wide
-Base4NFDI project IAM4NFDI, that is supported by the Working Group Identity and
-Access Management [@pempe2022]. Integration of this AAI solution into FAIRagro
-is performed by FAIRagro Measure 4.2. **SciWIn-Client** will support the
-respective authorization protocol to allow for the seamless remote execution of
+of Services and Data_ [@ewert2023, pp. 94-96] will be managed by the FAIRagro
+Community AAI based on [Keycloak](https://www.keycloak.org/). Availability to
+the wider research community will be realized through the NFDI-wide Base4NFDI
+project IAM4NFDI, that is supported by the Working Group Identity and Access
+Management [@pempe2022]. Integration of this AAI solution into FAIRagro is
+performed by FAIRagro Measure 4.2. **SciWIn-Client** will support the respective
+authorization protocol to allow for the seamless remote execution of
 computational workloads for authorized users.
 
 
@@ -310,12 +313,12 @@ and simulation models.
 ### FAIRagro-intrinsic requirements
 
 Sources for intrinsic requirements are:
- - Measure-inernal brainstorming regarding personal goals of the developers
+ - Measure-internal brainstorming regarding personal goals of the developers
  - regular meetings with colleagues in Task Area 4 
  - meetings with colleagues from other Task Areas
  - feedback from the Community Advisory Board
  
- These requirements are not elicitated in a systematic fashion, are expressed
+ These requirements are not elicited in a systematic fashion, are expressed
  subjectively by various individuals and might change over time or assume
  changing priorities. At the time of writing we identify the following
  non-functional requirements for the software-output of Measure 4.4:
@@ -331,22 +334,22 @@ Sources for intrinsic requirements are:
  
  In lieu of collecting requirements from the future users that can be found
  through a customer relationship in traditional software engineering [see e.g.
- robertson2024], we initially relied on requirements that we devise ourselves,
+ @robertson2024], we initially relied on requirements that we devise ourselves,
  based on our personal and consulting experience with regard to scientific
  computing and research data management. Since then we could augment these
  requirements with information from users and potential users gathered at events
  such as the FAIRagro Plenary.
  
 The currently considered requirement of SciWIn-Client can be roughly summarized
-as follows. Note however, that we follow an agile approch and continuously
-gather feedback from users and potential users. Priorization of features
+as follows. Note however, that we follow an agile approach and continuously
+gather feedback from users and potential users. Prioritization of features
 therefore changes as as project progresses
  
  - create machine readable workflow descriptions in a user-friendly manner
  - integrate naturally into a common command-line interface oriented style of interactive work
  - have a low threshold of learning before scientific work efficiency increases
  - provide an easy overview of numerous versions, runs, inputs, outputs
- - provide an easy way to annotate worflows for re-use
+ - provide an easy way to annotate workflows for re-use
  - provide an easy way for ad-hoc sharing of workflows
  - allow to annotate workflows for publication
  - provide a way to publish workflows as FAIR DOs in common repositories
@@ -359,6 +362,7 @@ therefore changes as as project progresses
 ### Strategic requirements
 
 The most salient non-functional requirements are:
+
   - the need to fit into the FAIRagro landscape of tools and services, and
   - the need to be compatible with the DataPLANT ecosystem of tools, services and data structures.
   
