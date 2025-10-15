@@ -227,32 +227,34 @@ or [Forgejo](https://forgejo.org/), or even commercial platforms such as
 
 ## Concretization of "Workflow Objects"
 
-**Workflow Objects** in the SciWIn-context are data structures that encapsulate
-the definition of workflows with associated code and data or references to code
-and data. Since a close collaboration between FAIRagro and NFDI Consortium
-DataPLANT is established on different levels, we have taken into account their
-version of a FAIR Digital Object, the **Annotated Research Context (ARC)**, and
-the established standards on which it is based. These are the **Common Workflow
-Language** [@crusoe2022] to specify computational workflows and the **Research
-Object Crate** [RO-Crate, @soiland-reyes2022] as a data structure to package
-data (which here also includes code and workflow descriptions). While
-compatibility with the advanced tooling and infrastructure of DataPLANT is an
-important piece to achieve synergies with this consortium covering a neighboring
-research domain, CWL and RO-Crate represent the state-of-the art for workflow
-descriptions and semantically annotated metadata formats. Therefore, they are
-also used or considered by other NFDI consortial, e.g. NFDI4Ing [@bronger2022]
-and NFDI4Health [@lobe2024]. Furthermore, the semanitic annotation of metadata
-allows for the integration of such FAIR Digital Objects into knowledge graphs
-that interconnect different domains.
+Workflow bjects in the SciWIn-context are data structures that encapsulate the
+definition of workflows with associated code and data or references to code and
+data. Since a close collaboration between FAIRagro and NFDI Consortium DataPLANT
+is established on different levels, we have taken into account their version of
+a Workflow Objects, the **Annotated Research Context (ARC)** [@dataplant205],
+and the established standards on which it is based. These are the **Common
+Workflow Language** [@crusoe2022] to specify computational workflows and the
+**Research Object Crate** [RO-Crate, @soiland-reyes2022] as a data structure to
+package data (which here also includes code and workflow descriptions) into
+which ARCs can be converted. While compatibility with the advanced tooling and
+infrastructure of DataPLANT is an important piece to achieve synergies with this
+consortium covering a neighboring research domain, CWL and RO-Crate represent
+the state-of-the art for workflow descriptions and semantically annotated
+metadata formats. Therefore, they are also used or considered by other NFDI
+consortial, e.g. NFDI4Ing [@bronger2022] and NFDI4Health [@lobe2024].
+Furthermore, the semanitic annotation of metadata allows for the integration of
+such Workflow Objects into knowledge graphs that interconnect different domains.
 
-While we consider the adoption of CWL and the RO-Crate as serialization formats
-to produce FAIR Digital Objects [@desmedt2020] as future-proof and highly
-interopearable choice, true, actionable interoperability doesn't seem to be
-feasible with exactly one universal format. We therfore do not consider anymore
-a single specification of a "workflow object" as a deliverable of Measure 4.4.
-We rather expect to accept and produce a variety of formats to interact with the
-external infrastructures and services that turn out to be useful for SciWIn
-users.
+ARCs are Git repositories and therefore contain the version history of code,
+data and metadata. While ARCs allow for workflow represenations as CWL, they do
+not require the representation of the full provenance information of a
+workflow's elements. M4.4 aims to work with DataPLANT towards a common ARC
+specification and its corresponding RO-Crate profile, so that both, DataPLANT's
+compatibilty requirements with related standards such as the ISA-model
+[@sansone2016] and the usability and workflow-representation requirements of
+SciWIn are met.
+
+## Implementation of Compute Instances
 
 The choice of CWL as workflow description language ensures that workflows
 created by SciWIn can be executed on a broad range of platforms
