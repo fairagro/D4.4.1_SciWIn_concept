@@ -223,7 +223,9 @@ provides access to Git repositories will work for that purpose. Institutional
 installations of servcies such as [GitLab](https://gitlab.com/gitlab-org/gitlab)
 or [Forgejo](https://forgejo.org/), or even commercial platforms such as
 [Bitbucket](https://bitbucket.org/), [GitLab.com](https://gitlab.com) or
-[GitHub](https://github.com/) can be used.
+[GitHub](https://github.com/) can be used. We aim in particular to make
+DataPLANT's [PLANTdataHUB](https://git.nfdi4plants.org) [@weil2023] available for the
+SciWIn-based collaboration on computational workflows.
 
 ## Concretization of "Workflow Objects"
 
