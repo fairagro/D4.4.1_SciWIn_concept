@@ -27,8 +27,10 @@ title: "The concept of SciWIn as part of the reproducible science toolset in FAI
 \author[1]{Jens Krumsieck \orcidlink{0000-0001-6242-5846}}
 \author[2]{Antonia Leidel \orcidlink{0009-0007-1765-0527}}
 \author[2]{Patrick König \orcidlink{0000-0002-8948-6793}}
+\author[3]{\linebreak Xaver Stiensmeier \orcidlink{0009-0005-3274-122X}}
 \affil[1]{Johann Heinrich von Thünen Institute, Braunschweig}
-\affil[2]{ Leibniz Institute of Plant Genetics and Crop Plant Research (IPK), Gatersleben}
+\affil[2]{Leibniz Institute of Plant Genetics and Crop Plant Research (IPK), Gatersleben}
+\affil[3]{Bielefeld University, Bielefeld}
 
 \maketitle
 \vspace{-1cm} 
