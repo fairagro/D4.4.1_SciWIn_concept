@@ -379,4 +379,10 @@ Version 1.0.0 was released Sep. 24, 2025. SciWIn-Client currently consists of
 over 15000 lines of Rust and has an extensive [documentation and
 tutorial](https://fairagro.github.io/m4.4_sciwin_client/).
 
+## Acknowledgements
+
+This work was created as part of the NFDI consortium FAIRagro
+([www.fairagro.net](https://www.fairagro.net)). We gratefully acknowledge the
+financial support of the German Research Foundation (DFG) – project number
+501899475.
 \pagebreak
